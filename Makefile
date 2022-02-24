@@ -12,5 +12,5 @@ venv:
 	python -m venv venv
 	source venv/bin/activate && pip install git+https://github.com/Matatika/matatika-dataset-converter.git
 datasets:
-	source venv/bin/activate && convert bundle/analyze/datasets/tap-meltano/ rawdata/ bundle/analyze/datasets/tap-meltano/output || convert bundle/analyze/datasets/tap-meltano/ rawdata/ bundle/analyze/datasets/tap-meltano/output
+	source venv/bin/activate && convert bundle/analyze/datasets/tap-trello/ rawdata/ bundle/analyze/datasets/tap-trello/output || convert bundle/analyze/datasets/tap-trello/ rawdata/ bundle/analyze/datasets/tap-trello/output
 	
