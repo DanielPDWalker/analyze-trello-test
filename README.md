@@ -12,7 +12,7 @@ Add plugin to `discovery.yml`:
 files:
 - name: analyze-trello-test
   namespace: tap_trello
-  repo: https://github.com/DanielPDWalker/analyze-trello-test-test
+  repo: https://github.com/DanielPDWalker/analyze-trello-test
   pip_url: git+https://github.com/DanielPDWalker/analyze-trello-test.git
 ```
 
