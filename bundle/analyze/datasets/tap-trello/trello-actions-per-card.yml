@@ -1,0 +1,45 @@
+version: datasets/v0.2
+source: tap-trello
+title: Top 10 Trello Cards by Number of Actions
+questions: What are my top 10 active trello cards?
+description: |-
+  Top 10 Trello cards by actions.
+
+  #trello
+metadata: |-
+  {
+    "name": "actions",
+    "label": "Top 10 Trello Cards by Actions", 
+    "related_table": {
+      "columns": [
+        {"name": "card_name", "label": "Card Name", "description": "Card Name"}
+      ],
+      "aggregates": [
+        {"name": "action_count", "label": "No. of Actions", "description": "No. of Actions"}
+      ]
+    }
+  }
+visualisation: |-
+  {"chartjs-chart": 
+    {"chartType": "bar", 
+      "options": {
+        "scales": {
+          "yAxes": [{
+            "ticks": {
+              "beginAtZero": true,
+              "stepSize": 1
+            }
+          }]
+        }
+      }
+    }
+  }
+query: |-
+  SELECT
+    MIN(data__card__name) "actions.card_name"
+    , COUNT(*) "actions.action_count"
+  FROM stream_trello_actions actions
+  WHERE data__card__name notnull
+  GROUP BY data__card__id
+  ORDER BY count desc
+  LIMIT 10

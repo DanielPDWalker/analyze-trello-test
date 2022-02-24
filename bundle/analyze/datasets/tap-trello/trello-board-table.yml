@@ -1,0 +1,31 @@
+version: datasets/v0.2
+source: tap-trello
+title: Trello Board Data
+questions: What is the overview of my trello boards?
+description: |-
+  Top 10 Trello boards info.
+
+  #trello
+metadata: |-
+  {
+    "name": "stb",
+    "label": "Trello Board Data", 
+    "related_table": {
+      "columns": [
+        {"name": "name", "label": "Name", "description": "Name"}, 
+        {"name": "last_activity", "label": "Last Activity", "description": "Last Activity"},
+        {"name": "last_view", "label": "Last View", "description": "Last View"},
+        {"name": "closed", "label": "Closed", "description": "Closed"},
+        {"name": "date_closed", "label": "Date Closed", "description": "Date Closed"}
+      ]
+    }
+  }
+visualisation: '{"google-chart": {"chartType": "Table"}}'
+query: |-
+  SELECT 
+    name "stb.name"
+    , datelastactivity "stb.last_activity"
+    , datelastview "stb.last_view"
+    , closed "stb.closed"
+    , dateclosed  "stb.date_closed"
+  FROM stream_trello_boards stb

@@ -1,0 +1,44 @@
+version: datasets/v0.2
+source: tap-trello
+title: Top 10 Trello Boards by Number of Actions
+questions: What are my top 10 active trello boards?
+description: |-
+  Top 10 Trello boards by actions.
+
+  #trello
+metadata: |-
+  {
+    "name": "actions",
+    "label": "Top 10 Trello Boards by Actions", 
+    "related_table": {
+      "columns": [
+        {"name": "board_name", "label": "Board Name", "description": "Board Name"}
+      ],
+      "aggregates": [
+        {"name": "action_count", "label": "No. of Actions", "description": "No. of Actions"}
+      ]
+    }
+  }
+visualisation: |-
+  {"chartjs-chart": 
+    {"chartType": "bar", 
+      "options": {
+        "scales": {
+          "yAxes": [{
+            "ticks": {
+              "beginAtZero": true,
+              "stepSize": 1
+            }
+          }]
+        }
+      }
+    }
+  }
+query: |-
+  SELECT 
+    MIN(data__board__name) "actions.board_name"
+    , COUNT(*) "actions.action_count"
+  FROM stream_trello_actions actions 
+  GROUP BY data__board__id
+  ORDER BY count desc
+  LIMIT 10
