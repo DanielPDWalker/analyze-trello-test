@@ -44,6 +44,7 @@ extractors:
       - name: access_token
         kind: password
       - name: start_date
+        required: false
 files:
   - name: analyze-trello-test
     namespace: tap_trello
