@@ -8,7 +8,7 @@ description: |-
   #trello
 metadata: |-
   {
-    "name": "actions",
+    "name": "stream_trello_actions",
     "label": "Top 10 Trello Boards by Actions", 
     "related_table": {
       "columns": [
@@ -27,7 +27,7 @@ visualisation: |-
           "yAxes": [{
             "ticks": {
               "beginAtZero": true,
-              "stepSize": 1
+              "stepSize": 2
             }
           }]
         }
@@ -36,9 +36,9 @@ visualisation: |-
   }
 query: |-
   SELECT 
-    MIN(data__board__name) "actions.board_name"
-    , COUNT(*) "actions.action_count"
-  FROM stream_trello_actions actions 
+    MIN(data__board__name) "stream_trello_actions.board_name"
+    , COUNT(*) "stream_trello_actions.action_count"
+  FROM stream_trello_actions 
   GROUP BY data__board__id
-  ORDER BY count desc
+  ORDER BY "stream_trello_actions.action_count" desc
   LIMIT 10

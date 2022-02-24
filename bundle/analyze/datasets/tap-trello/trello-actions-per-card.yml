@@ -8,7 +8,7 @@ description: |-
   #trello
 metadata: |-
   {
-    "name": "actions",
+    "name": "stream_trello_actions",
     "label": "Top 10 Trello Cards by Actions", 
     "related_table": {
       "columns": [
@@ -36,10 +36,10 @@ visualisation: |-
   }
 query: |-
   SELECT
-    MIN(data__card__name) "actions.card_name"
-    , COUNT(*) "actions.action_count"
-  FROM stream_trello_actions actions
+    MIN(data__card__name) "stream_trello_actions.card_name"
+    , COUNT(*) "stream_trello_actions.action_count"
+  FROM stream_trello_actions
   WHERE data__card__name notnull
   GROUP BY data__card__id
-  ORDER BY count desc
+  ORDER BY "stream_trello_actions.action_count" desc
   LIMIT 10

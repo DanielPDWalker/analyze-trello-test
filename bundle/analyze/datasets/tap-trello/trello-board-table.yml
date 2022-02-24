@@ -24,8 +24,8 @@ visualisation: '{"google-chart": {"chartType": "Table"}}'
 query: |-
   SELECT 
     name "stb.name"
-    , datelastactivity "stb.last_activity"
-    , datelastview "stb.last_view"
+    , date_last_activity "stb.last_activity"
+    , date_last_view "stb.last_view"
     , closed "stb.closed"
-    , dateclosed  "stb.date_closed"
+    , date_closed  "stb.date_closed"
   FROM stream_trello_boards stb
