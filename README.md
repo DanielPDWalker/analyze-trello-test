@@ -12,8 +12,8 @@ Add plugin to `discovery.yml`:
 files:
 - name: analyze-trello-test
   namespace: tap_trello
-  repo: https://github.com/DanielPDWalker/analyze-trello-test
-  pip_url: git+https://github.com/DanielPDWalker/analyze-trello.git
+  repo: https://github.com/DanielPDWalker/analyze-trello-test-test
+  pip_url: git+https://github.com/DanielPDWalker/analyze-trello-test.git
 ```
 
 Add plugin to your Meltano project:
@@ -49,5 +49,5 @@ files:
     namespace: tap_trello
     update:
       analyze/datasets/tap-trello: true
-    pip_url: git+https://github.com/DanielPDWalker/analyze-trello.git
+    pip_url: git+https://github.com/DanielPDWalker/analyze-trello-test.git
 ```
